@@ -10,10 +10,11 @@ Read Licence file for more information.
 ## Requirements
 * puppet-boolean [on GitHub](https://github.com/adrienthebo/puppet-boolean)
 
-## Authors
+## Inspired By
 * Gaël Chamoulaud (gchamoul at redhat dot com)
+[Strider/rhnreg_ks](https://forge.puppetlabs.com/strider/rhnreg_ks)
 
-## Contributors 
+## Contributor 
 * Thomas Foster (Thomas dot Foster eighty at gmail dot com)
 
 ## Type and Provider
@@ -72,7 +73,7 @@ rhn_register { 'server.example.com':
 
 In your puppet modules directory:
 
-   git directory to come
+  git pull https://github.com/nohtyp/rhnreg_ks.git 
 
 Ensure the module is present in your puppetmaster's own environment (it doesn't
 have to use it) and that the master has pluginsync enabled.  Run the agent on
@@ -92,4 +93,4 @@ To see the output of what the module is doing, run with the --debug option.
 
 ## Issues
 
-Please file any issues or suggestions on [on GitHub](https://github.com/strider/puppet-rhnreg_ks/issues)
+Please file any issues or suggestions on [on GitHub](https://github.com/nohtyp/rhnreg_ks/issues)
