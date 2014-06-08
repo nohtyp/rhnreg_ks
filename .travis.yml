@@ -6,7 +6,7 @@ before_install:
   - gem install puppet-lint
 
 notifications:
-  email: true
+  email:
     - thomas.foster80@gmail.com
 rvm:
   - 2.1.1 
