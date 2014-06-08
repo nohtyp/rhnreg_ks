@@ -26,7 +26,7 @@ The module adds the following new types:
 
 - **activationkeys**: The activation key to use when registering the system
 - **ensure**: Valid values are `present`, `absent`. Default value is `present`.
-- **force**: Should the registration be forced. Use this option with caution, setting it true will cause the rhnreg_ks command to be run every time runs. Default value `false`.
+- **force**: No need to use this option, unless want to register system every run. Default value `false`.
 - **hardware**: Whether or not the hardware information should be probed. Default value is `true`.
 - **packages**: Whether or not packages information should be probed. Default value is `true`.
 - **password**: The password to use when registering the system (required)
