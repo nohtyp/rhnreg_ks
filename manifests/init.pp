@@ -1,3 +1,22 @@
+# ==Class: rhnreg_ks
+# Parameters
+# activationkeys: The activation key to use when registering the system
+# ensure: Valid values are `present`, `absent`. Default value is `present`.
+# force: No need to use this option, unless want to register system every run. Default value `false`.
+# hardware: Whether or not the hardware information should be probed. Default value is `true`.
+# packages: Whether or not packages information should be probed. Default value is `true`.
+# password: The password to use when registering the system (required)
+# profile_name: The name the system should use in RHN or Satellite(if not set defaults to `hostname`)
+# proxy: If needed, specify the HTTP Proxy
+# proxy_password: Specify a password to use with an authenticated http proxy
+# proxy_user: Specify a username to use with an authenticated http proxy
+# rhnsd: Whether or not rhnsd should be started after registering. Default value is `true`.
+# server_url: Specify a url to use as a server (required)
+# ssl_ca_cert: Specify a file to use as the ssl CA cert
+# username: The username to use when registering the system (required)
+# virtinfo: Whether or not virtualiztion information should be uploaded. Default value is `true`.
+#
+
 class rhnreg_ks (
   $serverurl = 'satellite serverurl',
   $username = 'root',
