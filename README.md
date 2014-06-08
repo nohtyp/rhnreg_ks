@@ -74,7 +74,7 @@ rhn_register { 'server.example.com':
 
 In your puppet modules directory:
 
-  git pull https://github.com/nohtyp/rhnreg_ks.git 
+  git clone https://github.com/nohtyp/rhnreg_ks.git 
 
 Ensure the module is present in your puppetmaster's own environment (it doesn't
 have to use it) and that the master has pluginsync enabled.  Run the agent on
