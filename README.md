@@ -16,10 +16,6 @@ Read Licence file for more information.
 * Gaël Chamoulaud (gchamoul at redhat dot com)
 * [Strider/rhnreg_ks](https://forge.puppetlabs.com/strider/rhnreg_ks)
 
-## Contributor 
-
-* Thomas Foster (Thomas dot Foster eighty at gmail dot com)
-
 ## Type and Provider
 
 The module adds the following new types:
