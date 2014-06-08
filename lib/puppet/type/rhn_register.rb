@@ -2,7 +2,7 @@ require 'puppet/property/boolean'
 require 'puppet/type'
 
 Puppet::Type.newtype(:rhn_register) do
-  @doc = ""
+  @doc = ''
 
   ensurable do
 
@@ -15,7 +15,6 @@ Puppet::Type.newtype(:rhn_register) do
     end
 
     def insync?(is)
-
       @should.each do |should|
         case should
         when :present
@@ -32,87 +31,88 @@ Puppet::Type.newtype(:rhn_register) do
   end
 
   newparam(:name, :namevar => true) do
-    desc "The Server name."
+    desc 'The Server name.'
 
   end
 
   newparam(:profile_name) do
-    desc "The name the system should use in RHN or Satellite"
+    desc 'The name the system should use in RHN or Satellite'
 
   end
 
   newparam(:username) do
-    desc "The username to use when registering the system"
-    
+    desc 'The username to use when registering the system (required)'
+
   end
 
   newparam(:password) do
-    desc "The password to use when registering the system"
+    desc 'The password to use when registering the system (required)'
 
   end
 
   newparam(:activationkeys) do
-    desc "The activation key to use when registering the system (cannot be used with username and password)"
+    desc 'The activation key to use when registering the system (required)'
 
   end
 
   newparam(:hardware, :parent => Puppet::Property::Boolean) do
-    desc "Whether or not the hardware information should be probed"
+    desc 'Whether or not the hardware information should be probed'
 
     defaultto true
 
   end
 
   newparam(:packages, :parent => Puppet::Property::Boolean) do
-    desc "Whether or not packages information should be probed"
+    desc 'Whether or not packages information should be probed'
 
     defaultto true
 
   end
 
   newparam(:virtinfo, :parent => Puppet::Property::Boolean) do
-    desc "Whether or not virtualiztion information should be uploaded"
+    desc 'Whether or not virtualiztion information should be uploaded'
 
     defaultto true
   end
 
   newparam(:rhnsd, :parent => Puppet::Property::Boolean) do
-    desc "Whether or not rhnsd should be started after registering"
+    desc 'Whether or not rhnsd should be started after registering'
 
     defaultto true
   end
 
   newparam(:force, :parent => Puppet::Property::Boolean) do
-    desc "Should the registration be forced. Use this option with caution,
-          setting it true will cause the rhnreg_ks command to be run every time
-          runs."
+    desc 'This is an option to force registration, but is not needed
+          as this module takes care of name differences, and cloning.
+          If you want to verify that you can re-register then set to
+          true'
 
     defaultto false
   end
 
   newparam(:proxy) do
-    desc "If needed, specify the HTTP Proxy"
+    desc 'If needed, specify the HTTP Proxy'
 
   end
 
   newparam(:proxy_user) do
-    desc "Specify a username to use with an authenticated http proxy"
+    desc 'Specify a username to use with an authenticated http proxy'
 
   end
 
   newparam(:proxy_password) do
-    desc "Specify a password to use with an authenticated http proxy"
+    desc 'Specify a password to use with an authenticated http proxy'
 
   end
 
   newparam(:ssl_ca_cert) do
-    desc "Specify a file to use as the ssl CA cert"
-    #defaultto :"/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT"
+    desc 'Specify a file to use as the ssl CA cert'
+    # defaultto :"/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT"
 
   end
 
   newparam(:server_url) do
-    desc "Specify a url to use as a server"
+    desc 'Specify a url to use as a server'
 
   end
 
