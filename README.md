@@ -1,7 +1,8 @@
 # NOHTYP-RHNREG_KS
 
 This module provides a custom puppet provider to handle RHN, SATELLITE 
-and SPACEWALK server registering/un-registering.
+and SPACEWALK server registering/un-registering. Also, module handles
+`VMware` cloning.
 
 ## License
 
@@ -86,8 +87,6 @@ loads them.
 
 In a normal configuration username/password and activationkeys could not be used together, but since this module will support
 RHN, SATELLITE, SPACEWALK register and un-register by being able to log into the system using the api it needs username/password.
-
-Module now supports `VMware` cloning.
 
 To see the output of what the module is doing, run with the --debug option.
 
