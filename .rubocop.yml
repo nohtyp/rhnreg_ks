@@ -1,0 +1,12 @@
+Style/HashSyntax:
+  Enabled: false
+Style/LineLength:
+  Max: 157
+Style/MethodLength:
+  Enabled: false
+Style/SignalException:
+  Enabled: false
+Style/BlockNesting:
+  Enabled: false
+Style/CyclomaticComplexity:
+  Enabled: false
