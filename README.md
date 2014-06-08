@@ -12,7 +12,7 @@ Read Licence file for more information.
 
 ## Inspired By
 * Gaël Chamoulaud (gchamoul at redhat dot com)
-[Strider/rhnreg_ks](https://forge.puppetlabs.com/strider/rhnreg_ks)
+* [Strider/rhnreg_ks](https://forge.puppetlabs.com/strider/rhnreg_ks)
 
 ## Contributor 
 * Thomas Foster (Thomas dot Foster eighty at gmail dot com)
