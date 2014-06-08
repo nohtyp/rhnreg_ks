@@ -1,3 +1,5 @@
+# ==Class rhnreg_ks::params
+
 class rhnreg_ks::params {
 
   case $::operatingsystemmajrelease {
