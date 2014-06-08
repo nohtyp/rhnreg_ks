@@ -1,4 +1,4 @@
-# NOHTYP-RHNREG_KS
+# NOHTYP-RHNREG_KS   https://travis-ci.org/nohtyp/rhnreg_ks.svg?branch=master
 
 This module provides a custom puppet provider to handle RHN, SATELLITE 
 and SPACEWALK server registering/un-registering. Also, module handles
