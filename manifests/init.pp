@@ -24,8 +24,8 @@ class rhnreg_ks (
   $server = $::hostname,
   $profilename = $::fqdn,
   $path = '/etc/sysconfig/rhn/up2date',
-  $myup2date = 'serverURL=https://*',
-  $replaceurl = 'serverURL=https://vasat.promnetwork.com/XMLRPC',
+  # $myup2date = 'serverURL=https://*',
+  # $replaceurl = 'serverURL=https://<serverURL with proxyURL>/XMLRPC',
   $presentorabsent = 'present',
   $cacert = '/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT',
   $useforce = false,
@@ -47,12 +47,12 @@ class rhnreg_ks (
   force          => $useforce,
   }
 
-  file_line { $::fqdn:
-    path    => $path,
-    match   => $myup2date,
-    line    => $replaceurl,
-    require => Rhn_register["$server"],
-  }
+  # file_line { $::fqdn:
+  #  path    => $path,
+  #  match   => $myup2date,
+  #  line    => $replaceurl,
+  #  require => Rhn_register["$server"],
+  #}
 
   package {'rhn-client-tools':
     ensure => 'installed',
