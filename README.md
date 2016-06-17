@@ -73,11 +73,11 @@ rhn_register { 'server.example.com':
 
 This module works with hiera all options are available through variables:
 
-`examples`
+###Examples
 
-rhn_register::activationkeys: '2-rhel6-key' would set the activationkey to join the spacewalk server
-rhn_register::changeover: true would change the system over to the new spacewalk server
-rhn_register::username: myusername would be the username you want to verify settings in spacewalk
+`rhn_register::activationkeys: '2-rhel6-key' would set the activationkey to join the spacewalk server`
+`rhn_register::changeover: true would change the system over to the new spacewalk server`
+`rhn_register::username: myusername would be the username you want to verify settings in spacewalk`
 
 ## Installing
 
