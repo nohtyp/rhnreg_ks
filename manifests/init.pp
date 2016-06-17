@@ -18,64 +18,42 @@
 #
 
 class rhnreg_ks (
-  $serverurl = 'satellite serverurl',
-  $username = 'root',
-  $password = 'password',
-  $server = $::hostname,
-  $profilename = $::fqdn,
-  $path = '/etc/sysconfig/rhn/up2date',
-  # $myup2date = 'serverURL=https://*',
-  # $replaceurl = 'serverURL=https://<serverURL with proxyURL>/XMLRPC',
-  $presentorabsent = 'present',
-  $cacert = '/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT',
-  $useforce = false,
-  $activationkeys = $rhnreg_ks::params::activationkeys
+$serverurl          = $rhnreg_ks::params::serverurl,
+$username           = $rhnreg_ks::params::username,
+$password           = $rhnreg_ks::params::password,
+$server             = $rhnreg_ks::params::hostname,
+$profilename        = $rhnreg_ks::params::fqdn,
+$path               = $rhnreg_ks::params::path,
+# $myup2date        = 'serverURL=https://*',
+# $replaceurl       = 'serverURL=https://<serverURL with proxyURL>/XMLRPC',
+$presentorabsent    = $rhnreg_ks::params::presentorabsent,
+$cacert             = $rhnreg_ks::params::cacert,
+$useforce           = $rhnreg_ks::params::useforce,
+$activationkeys     = $rhnreg_ks::params::activationkeys,
+$changeover         = $rhnreg_ks::params::changeover
 ) inherits rhnreg_ks::params {
 
-  if $activationkeys == 'undef' {
-    fail('No Activation key specified found for system')
-  }
-
-  rhn_register { $server:
-  ensure         => $presentorabsent,
-  activationkeys => $activationkeys,
-  username       => $username,
-  password       => $password,
-  profile_name   => $profilename,
-  server_url     => $serverurl,
-  ssl_ca_cert    => $cacert,
-  force          => $useforce,
-  }
-
-  # file_line { $::fqdn:
-  #  path    => $path,
-  #  match   => $myup2date,
-  #  line    => $replaceurl,
-  #  require => Rhn_register["$server"],
-  #}
-
-  package {'rhn-client-tools':
-    ensure => 'installed',
-  }
-
-  package {'rhncfg-actions':
-    ensure => 'installed',
-  }
-
-  package {'rhnsd':
-    ensure => 'installed',
-  }
-
-  service {'rhnsd':
-    ensure  => 'running',
-    require => Package['rhnsd'],
-  }
-
-  exec { 'rhn-actions-control':
-    path    => '/usr/bin/',
-    command => 'rhn-actions-control --enable-all',
-    onlyif  => 'rhn-actions-control --report | /bin/grep disabled',
-    require => Package['rhncfg-actions'],
-  }
+if $changeover == true {
+  anchor { 'rhnreg_ks::begin': } ->
+    class {'::rhnreg_ks::file':} ->
+    class {'::rhnreg_ks::gpgkeys':} ->
+    class {'::rhnreg_ks::changeover':} ->
+    class {'::rhnreg_ks::install':} ->
+    class {'::rhnreg_ks::rhn_gems':}  ->
+    class {'::rhnreg_ks::service':} ->
+    class {'::rhnreg_ks::register':}
+    class {'::rhnreg_ks::exec':}  ->
+  anchor { 'rhnreg_ks::end': }
+ }
+else {
+  anchor { 'rhnreg_ks::begin': } ->
+    class {'::rhnreg_ks::file':} ->
+    class {'::rhnreg_ks::gpgkeys':} ->
+    class {'::rhnreg_ks::install':} ->
+    class {'::rhnreg_ks::rhn_gems':}  ->
+    class {'::rhnreg_ks::service':} ->
+    class {'::rhnreg_ks::register':}
+    class {'::rhnreg_ks::exec':}  ->
+  anchor { 'rhnreg_ks::end': }
+ }
 }
-

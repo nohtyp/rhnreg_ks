@@ -68,6 +68,17 @@ rhn_register { 'server.example.com':
 }
 </pre>
 
+
+##Hiera
+
+This module works with hiera all options are available through variables:
+
+`examples`
+
+rhn_register::activationkeys: '2-rhel6-key' would set the activationkey to join the spacewalk server
+rhn_register::changeover: true would change the system over to the new spacewalk server
+rhn_register::username: myusername would be the username you want to verify settings in spacewalk
+
 ## Installing
 
 In your puppet modules directory:
@@ -87,6 +98,11 @@ In a normal configuration username/password and activationkeys could not be used
 RHN, SATELLITE, SPACEWALK register and un-register by being able to log into the system using the api it needs username/password.
 
 To see the output of what the module is doing, run with the --debug option.
+
+### Updates
+
+`changeover` was added to module to help changing spacewalk servers and domains without going to every server to re-register.  Also,
+there were packages that are added to help the deployment of this module seamlessly into your environment.  This module does require installing rubygems and requires the build of gems.
 
 ## Issues
 
